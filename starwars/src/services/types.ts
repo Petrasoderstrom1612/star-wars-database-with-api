@@ -1,5 +1,40 @@
+type BaseEntity = {
+  id: number;
+  name: string;
+};
+
+/** FILMS DATA **/
+export interface FilmsCommon {
+  id: number;
+  title: string;
+  episode_id: string;
+  opening_crawl: string;
+  director: string;
+  producer: string;
+  release_date: string; 
+  image_url: string;
+  created: string;
+  edited: string;
+};
+
+export interface Films extends FilmsCommon{
+  characters_count: number,
+  planets_count: number,
+  starships_count: number,
+  vehicles_count: number,
+  species_count: number    
+}
+
+export interface Film extends FilmsCommon{
+  characters: BaseEntity[];
+  planets: BaseEntity[];
+  starships: BaseEntity[];
+  vehicles: BaseEntity[];
+  species: BaseEntity[];
+}
+
 /** PEOPLE DATA **/
-export interface PeopleCommon {
+export type PeopleCommon = {
   id: number;
   name: string;
   birth_year: string;
@@ -24,10 +59,10 @@ export type People = PeopleCommon & {
 }
 
 export type Person = PeopleCommon & {
-  films: { id: number; title: string }[];
-  species: { id: number; name: string }[];
-  starships: { id: number; name: string }[];
-  vehicles: { id: number; name: string }[];
+  films:  BaseEntity[];
+  species:  BaseEntity[];
+  starships:  BaseEntity[];
+  vehicles:  BaseEntity[];
 }
 
 /** PAGINATED RESPONSE**/
