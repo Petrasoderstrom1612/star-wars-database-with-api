@@ -1,40 +1,28 @@
-type BaseEntity = {
-  id: number;
-  name: string;
-};
+type Counts<K extends string> = { [P in `${K}_count`]: number };
+type References<K extends string> = { [P in K]: { id: number; name: string }[] };
 
 /** FILMS DATA **/
-export interface FilmsCommon {
+type FilmCommon = {
   id: number;
   title: string;
   episode_id: string;
   opening_crawl: string;
   director: string;
   producer: string;
-  release_date: string; 
+  release_date: string;
   image_url: string;
   created: string;
   edited: string;
 };
 
-export interface Films extends FilmsCommon{
-  characters_count: number,
-  planets_count: number,
-  starships_count: number,
-  vehicles_count: number,
-  species_count: number    
-}
+export type Films = FilmCommon &
+  Counts<"characters" | "planets" | "starships" | "vehicles" | "species">;
 
-export interface Film extends FilmsCommon{
-  characters: BaseEntity[];
-  planets: BaseEntity[];
-  starships: BaseEntity[];
-  vehicles: BaseEntity[];
-  species: BaseEntity[];
-}
+export type Film = FilmCommon &
+  References<"characters" | "planets" | "starships" | "vehicles" | "species">;
 
-/** PEOPLE DATA **/
-export type PeopleCommon = {
+/** PEOPLE **/
+type PeopleCommon = {
   id: number;
   name: string;
   birth_year: string;
@@ -46,27 +34,18 @@ export type PeopleCommon = {
   wiki_link: string;
   image_url: string;
   affiliations: string[];
-  created: string; 
-  edited: string; 
   homeworld: { id: number; name: string };
-}
+  created: string;
+  edited: string;
+};
 
-export type People = PeopleCommon & {
-  films_count: number;
-  species_count: number;
-  starships_count: number;
-  vehicles_count: number;
-}
+export type People = PeopleCommon &
+  Counts<"films" | "species" | "starships" | "vehicles">;
 
-export type Person = PeopleCommon & {
-  films:  BaseEntity[];
-  species:  BaseEntity[];
-  starships:  BaseEntity[];
-  vehicles:  BaseEntity[];
-}
+export type Person = PeopleCommon &
+  References<"films" | "species" | "starships" | "vehicles">;
 
 /** PAGINATED RESPONSE**/
-
 export interface PaginatedResponse<T> {
   current_page: number;
   data: T[];
