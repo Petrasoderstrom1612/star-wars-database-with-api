@@ -1,5 +1,9 @@
-/** FILM DATA **/
-export interface FilmsCommon {
+/** PEOPLE DATA **/
+export interface Homeworld{
+  id: number;
+  name: string;    
+}
+export interface PeopleCommon {
   id: number;
   name: string;
   birth_year: string;
@@ -13,27 +17,21 @@ export interface FilmsCommon {
   affiliations: string[];
   created: string; 
   edited: string; 
-}
-
-export interface Homeworld{
-  id: number;
-  name: string;    
-}
-
-export type Films = FilmsCommon & {
-films_count: number;
-  species_count: number;
-  starships_count: number;
-  vehicles_count: number;
   homeworld: Homeworld;
 }
 
-export type Film = FilmsCommon & {
-  characters_count: number;
-  planets_count: number;
+export type People = PeopleCommon & {
+  films_count: number;
+  species_count: number;
   starships_count: number;
   vehicles_count: number;
-  species_count: number;
+}
+
+export type Person = PeopleCommon & {
+  films: { id: number; title: string }[];
+  species: { id: number; name: string }[];
+  starships: { id: number; name: string }[];
+  vehicles: { id: number; name: string }[];
 }
 
 /** PAGINATED RESPONSE**/
