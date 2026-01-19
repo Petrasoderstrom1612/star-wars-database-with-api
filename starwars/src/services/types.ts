@@ -1,8 +1,4 @@
 /** PEOPLE DATA **/
-export interface Homeworld{
-  id: number;
-  name: string;    
-}
 export interface PeopleCommon {
   id: number;
   name: string;
@@ -17,7 +13,7 @@ export interface PeopleCommon {
   affiliations: string[];
   created: string; 
   edited: string; 
-  homeworld: Homeworld;
+  homeworld: { id: number; name: string };
 }
 
 export type People = PeopleCommon & {
