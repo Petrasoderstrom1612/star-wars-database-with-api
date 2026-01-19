@@ -1,5 +1,6 @@
 type Counts<K extends string> = { [P in `${K}_count`]: number };
 type References<K extends string> = { [P in K]: { id: number; name: string }[] };
+type Homeworld = { id: number; name: string };
 
 /** FILMS DATA **/
 type FilmCommon = {
@@ -34,7 +35,7 @@ type PeopleCommon = {
   wiki_link: string;
   image_url: string;
   affiliations: string[];
-  homeworld: { id: number; name: string };
+  homeworld: Homeworld;
   created: string;
   edited: string;
 };
@@ -67,6 +68,31 @@ export type Planets = PlanetsCommon &
 export type Planet = PlanetsCommon & { 
     residents: Omit<PeopleCommon, "homeworld">[] 
 };
+
+/** SPECIES **/
+export type SpeciesCommon = {
+  id: number;
+  name: string;
+  classification: string;
+  designation: string;
+  average_height: string;
+  average_lifespan: string;
+  eye_colors: string;
+  hair_colors: string;
+  skin_colors: string;
+  language: string;
+  created: string;
+  edited: string;
+};
+
+export type Species = SpeciesCommon &
+  Counts<"people" | "films">  & {
+    homeworld: Homeworld | null;
+    residents: Omit<PeopleCommon, "homeworld">[];
+  };
+
+/** STARSHIPS **/
+/** VEHICLES **/
 
 /** PAGINATED RESPONSE**/
 export interface PaginatedResponse<T> {
