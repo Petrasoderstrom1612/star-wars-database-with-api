@@ -45,6 +45,29 @@ export type People = PeopleCommon &
 export type Person = PeopleCommon &
   References<"films" | "species" | "starships" | "vehicles">;
 
+/** PLANETS **/
+type PlanetsCommon = {
+  id: number;
+  name: string;
+  rotation_period: string;
+  orbital_period: string;
+  diameter: string;
+  climate: string;
+  gravity: string;
+  terrain: string;
+  surface_water: string;
+  population: string;
+  created: string;
+  edited: string;
+};
+
+export type Planets = PlanetsCommon &
+  Counts<"residents" | "films">;
+
+export type Planet = PlanetsCommon & { 
+    residents: Omit<PeopleCommon, "homeworld">[] 
+};
+
 /** PAGINATED RESPONSE**/
 export interface PaginatedResponse<T> {
   current_page: number;
