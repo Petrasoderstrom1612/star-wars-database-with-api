@@ -5,9 +5,9 @@ import {
   PersonDetail,
   FilmDetail,
   Startpage,
-  Films,
+  FilmsPage,
   NotFound
-} from "./pages/index";
+} from "./pages";
 
 const App = () => {
   return (
@@ -17,7 +17,7 @@ const App = () => {
           <Route path="/" element={<Startpage/>}/>
           <Route path="/people" element={<People/>}/>
           <Route path="/people/:id" element={<PersonDetail/>}/>
-          <Route path="/films" element={<Films/>}/>
+          <Route path="/films" element={<FilmsPage/>}/>
           <Route path="/films/:id" element={<FilmDetail/>}/>
           <Route path="*" element={<NotFound/>} />
         </Route>

@@ -4,10 +4,11 @@ import type { Films } from "../services/types";
 import { isJSendSuccess } from "../services/types";
 import {handleError} from "../utils/handleError"
 
-const Films = () => {
-  const [film, setFilms] = useState<Films[]>([]);
+const FilmsPage = () => {
+  const [films, setFilms] = useState<Films[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+  console.log("error", error,"loading", loading)
 
   useEffect(() => {
     const loadFilms = async () => {
@@ -18,6 +19,7 @@ const Films = () => {
         const response = await getFilms(); 
 
         if (isJSendSuccess(response)) { 
+          console.log("film:", response.data)
           setFilms(response.data); 
         } else if (response.status === "fail") {
           setError("Validation failed"); 
@@ -34,9 +36,15 @@ const Films = () => {
     loadFilms();
   }, []);
 
-  console.log(film, error, loading)
-
+    useEffect(() => {
+    console.log("Updated films state:", films);
+    console.log("Error state:", error);
+    console.log("Loading state:", loading);
+  }, [films, error, loading]);
+  
   return(<h1>hi</h1>)
 };
 
-export default Films
+
+
+export default FilmsPage
