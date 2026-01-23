@@ -19,7 +19,7 @@ type JSendErrorResponse = {
 	message: string;
 }
 
-type JSendResponse<T> = JSendSuccessResponse<T> | JSendFailResponse | JSendErrorResponse;
+export type JSendResponse<T> = JSendSuccessResponse<T> | JSendFailResponse | JSendErrorResponse;
 
 /*Type Guard */
 export const isJSendSuccess = <T>(response: JSendResponse<T>): response is JSendSuccessResponse<T> => {

@@ -1,8 +1,13 @@
+import { Outlet } from "react-router-dom";
+import Layout from "../components/Layout"
+
 const Startpage = () => {
   return (
-    <div>
-      startpage
-    </div>
+    <>
+    <Layout />
+    <main>
+      <Outlet />
+    </main></>
   )
 }
 
