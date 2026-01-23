@@ -1,5 +1,5 @@
 import axios from "axios";
-import type {Films, PaginatedResponse} from "./types.ts"
+import type {PaginatedResponse} from "./types.ts"
 
 
 const BASE_URL = import.meta.env.VITE_API_BASEURL 
@@ -20,11 +20,20 @@ const get = async <T>(endpoint: string) => {
 	return res.data;
 }
 
-export const getFilms = async () => {
-  return get<PaginatedResponse<Films>>("/films"); 
-}
+export const getResource = async <T>(
+  endpoint: string,
+  page: number,
+  search?: string
+): Promise<PaginatedResponse<T>> => {
+  const params = new URLSearchParams();
 
-getFilms()
+  params.set("page", page.toString());
+  if (search) params.set("search", search);
+
+  return get<PaginatedResponse<T>>(
+    `${endpoint}?${params.toString()}`
+  );
+};
 
 // const searchWord  = async () => {
 // 	const axiosResponse = await axios.post<SearchResponse>("/");

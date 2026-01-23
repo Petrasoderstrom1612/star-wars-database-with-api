@@ -1,41 +1,57 @@
-import { useEffect, useState } from "react";
-import { getFilms} from "../services/StarWarsAPI";
 import type { Films } from "../services/types";
-import {handleError} from "../utils/handleError"
+import { usePaginatedResource } from "../hooks/usePaginatedResource";
+import { useState } from "react";
 
 const FilmsPage = () => {
-  const [films, setFilms] = useState<Films[]>([]);
-  const [error, setError] = useState<string | null>(null);
-  const [loading, setLoading] = useState(false);
-  console.log("error", error,"loading", loading)
+  const {
+    data: films,
+    page,
+    lastPage,
+    loading,
+    error,
+    setPageParam,
+    setSearchParam,
+  } = usePaginatedResource<Films>("/films"); // <Films> ensures film has correct type
 
-useEffect(() => {
-  const loadFilms = async () => {
-    setLoading(true);
-    setError(null);
+  const [input, setInput] = useState("");
 
-    try {
-      const response = await getFilms(); 
-      setFilms(response.data); 
-    } catch (err) {
-      setError(handleError(err));
-    } finally {
-      setLoading(false);
-    }
-  };
+  if (loading) return <p>Loading…</p>;
+  if (error) return <p>{error}</p>;
 
-  loadFilms();
-}, []);
+  return (
+    <>
+      <input
+        placeholder="Search films"
+        value={input}
+        onChange={(e) => setInput(e.target.value)}
+      />
+      <button onClick={() => setSearchParam(input)}>Search</button>
 
-    useEffect(() => {
-    console.log("Updated films state:", films);
-    console.log("Error state:", error);
-    console.log("Loading state:", loading);
-  }, [films, error, loading]);
-  
-  return <h1>{films[0]?.title ?? "Loading..."}</h1>;
+      <ul>
+        {films.map((film: Films) => (
+          <li key={film.id}>{film.title}</li>
+        ))}
+      </ul>
+
+      {!lastPage && (
+        <div>
+          <button disabled={page === 1} onClick={() => setPageParam(page - 1)}>
+            Previous
+          </button>
+          <span>
+            {" "}
+            Page {page} of {lastPage}{" "}
+          </span>
+          <button
+            disabled={page === lastPage}
+            onClick={() => setPageParam(page + 1)}
+          >
+            Next
+          </button>
+        </div>
+      )}
+    </>
+  );
 };
 
-
-
-export default FilmsPage
+export default FilmsPage;

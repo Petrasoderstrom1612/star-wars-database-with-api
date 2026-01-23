@@ -144,5 +144,5 @@ export type Species = SpeciesCommon &
 // 	return response.status === "success";
 // }
 
-export type SearchedWord = string
+// export type SearchedWord = string
 // export type SearchResponse = JSendResponse<SearchedWord>;
