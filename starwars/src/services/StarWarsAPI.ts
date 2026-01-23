@@ -1,5 +1,6 @@
 import axios from "axios";
-import type {JSendResponse, Films} from "./types.ts"
+import type {Films, PaginatedResponse} from "./types.ts"
+
 
 const BASE_URL = import.meta.env.VITE_API_BASEURL 
 console.log(BASE_URL)
@@ -20,7 +21,7 @@ const get = async <T>(endpoint: string) => {
 }
 
 export const getFilms = async () => {
-	return get<JSendResponse<Films[]>>("/films");
+  return get<PaginatedResponse<Films>>("/films"); 
 }
 
 getFilms()

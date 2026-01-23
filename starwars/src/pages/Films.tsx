@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { getFilms} from "../services/StarWarsAPI";
 import type { Films } from "../services/types";
-import { isJSendSuccess } from "../services/types";
 import {handleError} from "../utils/handleError"
 
 const FilmsPage = () => {
@@ -10,31 +9,23 @@ const FilmsPage = () => {
   const [loading, setLoading] = useState(false);
   console.log("error", error,"loading", loading)
 
-  useEffect(() => {
-    const loadFilms = async () => {
-      setLoading(true);
-      setError(null);
+useEffect(() => {
+  const loadFilms = async () => {
+    setLoading(true);
+    setError(null);
 
-      try {
-        const response = await getFilms(); 
+    try {
+      const response = await getFilms(); 
+      setFilms(response.data); 
+    } catch (err) {
+      setError(handleError(err));
+    } finally {
+      setLoading(false);
+    }
+  };
 
-        if (isJSendSuccess(response)) { 
-          console.log("film:", response.data)
-          setFilms(response.data); 
-        } else if (response.status === "fail") {
-          setError("Validation failed"); 
-        } else { 
-          setError(response.message); 
-        }
-      } catch (err) {
-        setError(handleError(err)); 
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    loadFilms();
-  }, []);
+  loadFilms();
+}, []);
 
     useEffect(() => {
     console.log("Updated films state:", films);
@@ -42,7 +33,7 @@ const FilmsPage = () => {
     console.log("Loading state:", loading);
   }, [films, error, loading]);
   
-  return(<h1>hi</h1>)
+  return <h1>{films[0]?.title ?? "Loading..."}</h1>;
 };
 
 

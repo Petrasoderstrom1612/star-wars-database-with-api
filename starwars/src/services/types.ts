@@ -1,36 +1,25 @@
-/*API*/ 
-type ValidationError = {
-	path: string;
-	msg: string;
+/** PAGINATED RESPONSE**/
+export interface PaginatedResponse<T> {
+  current_page: number;
+  data: T[];
+  first_page_url: string;
+  from: number;
+  last_page: number;
+  last_page_url: string;
+  links: {
+    url: string | null;
+    label: string;
+    active: boolean;
+  }[];
+  next_page_url: string | null;
+  path: string;
+  per_page: number;
+  prev_page_url: string | null;
+  to: number;
+  total: number;
 }
 
-type JSendSuccessResponse<T> = {
-	status: "success";
-	data: T;
-}
-
-type JSendFailResponse = {
-	status: "fail";
-	data: ValidationError[];
-}
-
-type JSendErrorResponse = {
-	status: "error";
-	message: string;
-}
-
-export type JSendResponse<T> = JSendSuccessResponse<T> | JSendFailResponse | JSendErrorResponse;
-
-/*Type Guard */
-export const isJSendSuccess = <T>(response: JSendResponse<T>): response is JSendSuccessResponse<T> => {
-	return response.status === "success";
-}
-
-type SearchedWord = string
-export type SearchResponse = JSendResponse<SearchedWord>;
-
-/*cathegories*/
-
+/*CATEGORIES*/
 type Counts<K extends string> = { [P in `${K}_count`]: number };
 type References<K extends string> = { [P in K]: { id: number; name: string }[] };
 type Homeworld = { id: number; name: string };
@@ -127,26 +116,33 @@ export type Species = SpeciesCommon &
 /** STARSHIPS **/
 /** VEHICLES **/
 
-/** PAGINATED RESPONSE**/
-export interface PaginatedResponse<T> {
-  current_page: number;
-  data: T[];
+// /*API*/ 
+// type ValidationError = {
+// 	path: string;
+// 	msg: string;
+// }
 
-  first_page_url: string;
-  from: number;
-  last_page: number;
-  last_page_url: string;
+// type JSendSuccessResponse<T> = {
+// 	status: "success";
+// 	data: T;
+// }
 
-  links: {
-    url: string | null;
-    label: string;
-    active: boolean;
-  }[];
+// type JSendFailResponse = {
+// 	status: "fail";
+// 	data: ValidationError[];
+// }
 
-  next_page_url: string | null;
-  path: string;
-  per_page: number;
-  prev_page_url: string | null;
-  to: number;
-  total: number;
-}
+// type JSendErrorResponse = {
+// 	status: "error";
+// 	message: string;
+// }
+
+// export type JSendResponse<T> = JSendSuccessResponse<T> | JSendFailResponse | JSendErrorResponse;
+
+// /*Type Guard */
+// export const isJSendSuccess = <T>(response: JSendResponse<T>): response is JSendSuccessResponse<T> => {
+// 	return response.status === "success";
+// }
+
+export type SearchedWord = string
+// export type SearchResponse = JSendResponse<SearchedWord>;
