@@ -1,3 +1,36 @@
+/*API*/ 
+type ValidationError = {
+	path: string;
+	msg: string;
+}
+
+type JSendSuccessResponse<T> = {
+	status: "success";
+	data: T;
+}
+
+type JSendFailResponse = {
+	status: "fail";
+	data: ValidationError[];
+}
+
+type JSendErrorResponse = {
+	status: "error";
+	message: string;
+}
+
+type JSendResponse<T> = JSendSuccessResponse<T> | JSendFailResponse | JSendErrorResponse;
+
+/*Type Guard */
+export const isJSendSuccess = <T>(response: JSendResponse<T>): response is JSendSuccessResponse<T> => {
+	return response.status === "success";
+}
+
+type SearchedWord = string
+export type SearchResponse = JSendResponse<SearchedWord>;
+
+/*cathegories*/
+
 type Counts<K extends string> = { [P in `${K}_count`]: number };
 type References<K extends string> = { [P in K]: { id: number; name: string }[] };
 type Homeworld = { id: number; name: string };
