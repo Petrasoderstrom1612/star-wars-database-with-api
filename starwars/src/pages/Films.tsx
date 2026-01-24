@@ -1,34 +1,48 @@
 import type { Films } from "../services/types";
 import { usePaginatedResource } from "../hooks/usePaginatedResource";
-import { useState } from "react";
+import { useState} from "react";
 
 const FilmsPage = () => {
   const {
     data: films,
     page,
     lastPage,
+    search,
     loading,
     error,
     setPageParam,
     setSearchParam,
-  } = usePaginatedResource<Films>("/films"); // <Films> ensures film has correct type
+  } = usePaginatedResource<Films>("/films");
 
-  const [input, setInput] = useState("");
+  // Local state for the input
+  const [input, setInput] = useState(search || "");
+
+  // Key trick: when `search` changes, reset input via a "keyed" input component
+  // This avoids calling setState inside an effect
+  const inputKey = search ?? "empty";
+
+  const handleSubmit = () => {
+    setSearchParam(input); // update URL and reload data
+  };
+
 
   if (loading) return <p>Loading…</p>;
   if (error) return <p>{error}</p>;
 
-return (
-  <>
-    {/* Search input */}
+  return (
+    <>
     <div className="mb-3 d-flex gap-2">
       <input
+        key={inputKey} 
         className="form-control"
         placeholder="Search films"
         value={input}
-        onChange={(e) => setInput(e.target.value)}
+          onChange={(e) => setInput(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") handleSubmit();
+          }}
       />
-      <button className="btn btn-primary" onClick={() => setSearchParam(input)}>
+      <button className="btn btn-primary" onClick={handleSubmit}>
         Search
       </button>
     </div>
