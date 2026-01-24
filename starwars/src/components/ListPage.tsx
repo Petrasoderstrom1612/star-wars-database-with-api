@@ -28,7 +28,7 @@ export const ListPage = <T,>({ endpoint, renderItem, placeholder }: ListPageProp
   const handleSubmit = () => setSearchParam(input);
 
   if (loading) { return <Loader />;}
-   if (error) return <p className="text-danger" role="alert">{handleError(error)}</p>;
+  if (error) return <p className="text-danger" role="alert">{handleError(error)}</p>;
 
   return (
     <>

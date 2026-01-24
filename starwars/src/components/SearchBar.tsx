@@ -7,12 +7,7 @@ interface SearchBarProps {
   placeholder?: string;
 }
 
-export const SearchBar: FC<SearchBarProps> = ({
-  value,
-  onChange,
-  onSubmit,
-  placeholder = "Search...",
-}) => (
+export const SearchBar: FC<SearchBarProps> = ({value, onChange, onSubmit, placeholder = "Search..."}) => (
   <div className="mb-3 d-flex gap-2">
     <input
       className="form-control"

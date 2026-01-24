@@ -1,7 +1,7 @@
+import { getResource } from "../services/StarWarsAPI"; 
 import { handleError } from "../utils/handleError";
 import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
-import { getResource } from "../services/StarWarsAPI"; 
 import type { PaginatedResponse } from "../services/types";
 
 export const usePaginatedResource = <T>(endpoint: string, initialPage = 1) => {

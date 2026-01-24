@@ -10,10 +10,7 @@ export const handleError = (err: unknown): string => {
     return err.message;
   } 
   else {
-    console.log(
-      "Something unexpected happend that does not have to do with the network.",
-      err
-    );
+    console.log("Something unexpected happened that does not have to do with the network.", err);
     return "Something unexpected happened";
   }
 };
