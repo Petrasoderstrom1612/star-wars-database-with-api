@@ -14,7 +14,7 @@ const instance = axios.create({
 	},
 });
 
-const get = async <T>(endpoint: string) => {
+export const get = async <T>(endpoint: string) => {
 	const res = await instance.get<T>(endpoint);
     console.log(res.data)
 	return res.data;
