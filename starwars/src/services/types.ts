@@ -115,34 +115,3 @@ export type Species = SpeciesCommon &
 
 /** STARSHIPS **/
 /** VEHICLES **/
-
-// /*API*/ 
-// type ValidationError = {
-// 	path: string;
-// 	msg: string;
-// }
-
-// type JSendSuccessResponse<T> = {
-// 	status: "success";
-// 	data: T;
-// }
-
-// type JSendFailResponse = {
-// 	status: "fail";
-// 	data: ValidationError[];
-// }
-
-// type JSendErrorResponse = {
-// 	status: "error";
-// 	message: string;
-// }
-
-// export type JSendResponse<T> = JSendSuccessResponse<T> | JSendFailResponse | JSendErrorResponse;
-
-// /*Type Guard */
-// export const isJSendSuccess = <T>(response: JSendResponse<T>): response is JSendSuccessResponse<T> => {
-// 	return response.status === "success";
-// }
-
-// export type SearchedWord = string
-// export type SearchResponse = JSendResponse<SearchedWord>;

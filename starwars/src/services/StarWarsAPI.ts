@@ -20,11 +20,7 @@ const get = async <T>(endpoint: string) => {
 	return res.data;
 }
 
-export const getResource = async <T>(
-  endpoint: string,
-  page: number,
-  search?: string
-): Promise<PaginatedResponse<T>> => {
+export const getResource = async <T>(endpoint: string, page: number, search?: string): Promise<PaginatedResponse<T>> => {
   const params = new URLSearchParams();
 
   params.set("page", page.toString());
@@ -34,25 +30,3 @@ export const getResource = async <T>(
     `${endpoint}?${params.toString()}`
   );
 };
-
-// const searchWord  = async () => {
-// 	const axiosResponse = await axios.post<SearchResponse>("/");
-
-// 	const res = axiosResponse.data;
-//  //     ^?
-
-// 	if (res.status === "success") {
-// 		console.log(res);  // JSendSuccessResponse<Order>
-// 		console.log("Data:", res.data);  // Order
-// 		return res;
-// 	} else if (res.status === "fail") {
-// 		console.log(res);  // JSendFailResponse
-// 		console.log("Data:", res.data);  // ValidationError[]
-// 		return res;
-// 	} else {
-// 		console.log(res);  // JSendErrorResponse
-// 		console.log("Message:", res.message);
-// 	}
-// }
-
-// searchWord();
