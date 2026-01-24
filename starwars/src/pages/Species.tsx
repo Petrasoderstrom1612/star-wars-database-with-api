@@ -1,22 +1,39 @@
 import { Link } from "react-router-dom";
-import type { Films } from "../services/types";
+import type { Species } from "../services/types";
 import { ListPage } from "../components/ListPage";
 
-const FilmsPage = () => (
-  <ListPage<Films>
-    endpoint="/films"
-    placeholder="Search films"
-    renderItem={(film) => (
-      <div key={film.id} className="col-12 col-md-6 col-lg-4">
+const SpeciesPage = () => (
+  <ListPage<Species>
+    endpoint="/species"
+    placeholder="Search species"
+    renderItem={(specie) => (
+      <div key={specie.id} className="col-12 col-md-6 col-lg-4 mb-4">
         <div className="card h-100">
-          {film.image_url && <img src={film.image_url} className="card-img-top" alt={film.title} />}
           <div className="card-body d-flex flex-column">
-            <h5 className="card-title">{film.title}</h5>
-            <p><strong>Episode:</strong> {film.episode_id}</p>
-            <p><strong>Director:</strong> {film.director}</p>
-            <p><strong>Producer:</strong> {film.producer}</p>
-            <p><strong>Release Date:</strong> {film.release_date}</p>
-            <Link to={`/films/${film.id}`} className="btn btn-outline-primary mt-auto">Read More</Link>
+            <h5 className="card-title">{specie.name}</h5>
+
+            <ul className="list-unstyled mb-3">
+              <li><strong>Classification:</strong> {specie.classification}</li>
+              <li><strong>Designation:</strong> {specie.designation}</li>
+              <li><strong>Average Height:</strong> {specie.average_height} cm</li>
+              <li><strong>Average Lifespan:</strong> {specie.average_lifespan} years</li>
+              <li><strong>Eye Colors:</strong> {specie.eye_colors}</li>
+              <li><strong>Hair Colors:</strong> {specie.hair_colors}</li>
+              <li><strong>Skin Colors:</strong> {specie.skin_colors}</li>
+              <li><strong>Language:</strong> {specie.language}</li>
+              {specie.homeworld?.id && specie.homeworld?.name && (
+                <li>
+                  <strong>Homeworld:</strong>{" "}
+                  <Link to={`/planets/${specie.homeworld.id}`}>{specie.homeworld.name}</Link>
+                </li>
+              )}
+              <li><strong>People Count:</strong> {specie.people_count}</li>
+              <li><strong>Films Count:</strong> {specie.films_count}</li>
+            </ul>
+
+            <Link to={`/species/${specie.id}`} className="btn btn-outline-primary mt-3">
+              Read More
+            </Link>
           </div>
         </div>
       </div>
@@ -24,4 +41,5 @@ const FilmsPage = () => (
   />
 );
 
-export default FilmsPage;
+
+export default SpeciesPage;
