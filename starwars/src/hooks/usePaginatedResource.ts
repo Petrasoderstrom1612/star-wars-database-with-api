@@ -9,7 +9,7 @@ export const usePaginatedResource = <T>(endpoint: string, initialPage = 1) => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const page = Number(searchParams.get("page") ?? initialPage);
-  const query = searchParams.get("query") || undefined;
+  const search = searchParams.get("search") || undefined;
 
   const [data, setData] = useState<T[]>([]);
   const [lastPage, setLastPage] = useState<number>(1);
@@ -22,7 +22,7 @@ export const usePaginatedResource = <T>(endpoint: string, initialPage = 1) => {
       setError(null);
 
       try {
-        const response: PaginatedResponse<T> = await getResource<T>(endpoint, page, query);
+        const response: PaginatedResponse<T> = await getResource<T>(endpoint, page, search);
         setData(response.data);
         setLastPage(response.last_page);
       } catch (err) {
@@ -34,21 +34,21 @@ export const usePaginatedResource = <T>(endpoint: string, initialPage = 1) => {
     };
 
     loadData();
-  }, [endpoint, page, query]);
+  }, [endpoint, page, search]);
 
   const setPageParam = (newPage: number) => {
     setSearchParams({
       page: String(newPage),
-      ...(query ? { query } : {}),
+      ...(search ? { search } : {}),
     });
   };
 
   const setSearchParam = (newQuery: string) => {
     setSearchParams({
       page: "1",
-      ...(newQuery ? { query: newQuery } : {}),
+      ...(newQuery ? { search: newQuery } : {}),
     });
   };
 
-  return { data, page, lastPage, query, loading, error, setPageParam, setSearchParam };
+  return { data, page, lastPage, search, loading, error, setPageParam, setSearchParam };
 };
