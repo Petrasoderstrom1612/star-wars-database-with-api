@@ -35,12 +35,8 @@ const People = () => (
             </ul>
             <div className="mt-auto d-flex flex-column gap-2">
               {person.wiki_link && (
-                <a
-                  href={person.wiki_link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Wiki
+                <a href={person.wiki_link} target="_blank" rel="noopener noreferrer">
+                  Wikipedia link dedicated to {person.name}
                 </a>
               )}
               <Link to={`/people/${person.id}`} className="btn btn-outline-primary">
