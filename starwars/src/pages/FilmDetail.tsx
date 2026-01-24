@@ -34,22 +34,19 @@ const FilmDetail = () => {
 
   return (
     <div className="container mt-3">
-      {/* Back button */}
+     
       <button className="btn btn-secondary mb-3" onClick={() => navigate(-1)}>
         &larr; Back
       </button>
 
-      {/* Film header */}
       <h1>{film.title}</h1>
       <p><strong>Episode:</strong> {film.episode_id}</p>
       <p><strong>Director:</strong> {film.director}</p>
       <p><strong>Producer:</strong> {film.producer}</p>
       <p><strong>Release Date:</strong> {film.release_date}</p>
 
-      {/* Opening crawl */}
       <p style={{ whiteSpace: "pre-line" }}>{film.opening_crawl}</p>
 
-      {/* Counts */}
       <ul className="list-unstyled mb-3">
         <li><strong>Characters:</strong> {film.characters.length}</li>
         <li><strong>Planets:</strong> {film.planets.length}</li>
@@ -58,27 +55,27 @@ const FilmDetail = () => {
         <li><strong>Species:</strong> {film.species.length}</li>
       </ul>
 
-      {/* Characters links */}
       {film.characters.length > 0 && (
         <div className="mb-3">
           <h5>Characters</h5>
           <ul>
-            {film.characters.map((char) => (
-              <li key={char.id}>
-                <Link to={`/people/${char.id}`}>{char.name}</Link>
+            {film.characters.map((character) => (
+              <li key={character.id}>
+                <Link to={`/people/${character.id}`}>{character.name}</Link>
               </li>
             ))}
           </ul>
         </div>
       )}
 
-      {/* Planets, Starships, Vehicles, Species */}
       {film.planets.length > 0 && (
         <div className="mb-3">
           <h5>Planets</h5>
           <ul>
             {film.planets.map((planet) => (
-              <li key={planet.id}>{planet.name}</li>
+              <li key={planet.id}>
+                <Link to={`/planets/${planet.id}`}>{planet.name}</Link>
+              </li>
             ))}
           </ul>
         </div>
@@ -88,8 +85,10 @@ const FilmDetail = () => {
         <div className="mb-3">
           <h5>Starships</h5>
           <ul>
-            {film.starships.map((ship) => (
-              <li key={ship.id}>{ship.name}</li>
+            {film.starships.map((starship) => (
+              <li key={starship.id}>
+                <Link to={`/starships/${starship.id}`}>{starship.name}</Link>
+              </li>
             ))}
           </ul>
         </div>
@@ -100,7 +99,9 @@ const FilmDetail = () => {
           <h5>Vehicles</h5>
           <ul>
             {film.vehicles.map((vehicle) => (
-              <li key={vehicle.id}>{vehicle.name}</li>
+              <li key={vehicle.id}>
+                <Link to={`/vehicles/${vehicle.id}`}>{vehicle.name}</Link>
+              </li>
             ))}
           </ul>
         </div>
@@ -110,8 +111,10 @@ const FilmDetail = () => {
         <div className="mb-3">
           <h5>Species</h5>
           <ul>
-            {film.species.map((s) => (
-              <li key={s.id}>{s.name}</li>
+            {film.species.map((species) => (
+              <li key={species.id}>
+                <Link to={`/species/${species.id}`}>{species.name}</Link>
+              </li>
             ))}
           </ul>
         </div>
