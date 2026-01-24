@@ -14,15 +14,11 @@ const FilmsPage = () => {
     setSearchParam,
   } = usePaginatedResource<Films>("/films");
 
-  // Local state for the input
   const [input, setInput] = useState(search || "");
-
-  // Key trick: when `search` changes, reset input via a "keyed" input component
-  // This avoids calling setState inside an effect
   const inputKey = search ?? "empty";
 
   const handleSubmit = () => {
-    setSearchParam(input); // update URL and reload data
+    setSearchParam(input); 
   };
 
 
@@ -47,7 +43,7 @@ const FilmsPage = () => {
       </button>
     </div>
 
-    {/* Films grid */}
+    {/* Films */}
     <div className="row g-3">
       {films.map((film: Films) => (
         <div key={film.id} className="col-12 col-md-6 col-lg-4">
