@@ -1,3 +1,4 @@
+import { handleError } from "../utils/handleError";
 import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import { getResource } from "../services/StarWarsAPI"; 
@@ -24,7 +25,7 @@ export const usePaginatedResource = <T>(endpoint: string, initialPage = 1) => {
         setData(response.data);
         setLastPage(response.last_page);
       } catch (err) {
-        // setError(handleError(err));
+        setError(handleError(err));
         console.log(err)
       } finally {
         setLoading(false);
