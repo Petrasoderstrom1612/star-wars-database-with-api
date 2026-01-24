@@ -1,5 +1,3 @@
-import { Outlet } from "react-router-dom";
-
 const Startpage = () => {
   return (
     <>
@@ -32,10 +30,6 @@ const Startpage = () => {
           </div>
         </div>
       </section>
-
-      <main className="container my-5">
-        <Outlet />
-      </main>
     </>
   );
 };
