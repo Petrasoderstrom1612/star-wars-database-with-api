@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import type { Films } from "../services/types";
 import { ListPage } from "../components/ListPage";
 
-const FilmsPage = () => (
+const Films = () => (
   <ListPage<Films>
     endpoint="/films"
     placeholder="Search films"
@@ -24,4 +24,4 @@ const FilmsPage = () => (
   />
 );
 
-export default FilmsPage;
+export default Films;
