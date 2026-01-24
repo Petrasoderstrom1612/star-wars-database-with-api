@@ -1,7 +1,6 @@
 import { NavLink, Outlet } from "react-router-dom";
 
 const navItems = [
-  { path: "/", name: "Home" },
   { path: "/films", name: "Films" },
   { path: "/people", name: "People" },
   { path: "/planets", name: "Planets" },
