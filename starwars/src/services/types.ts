@@ -29,6 +29,7 @@ export interface PaginationProps {
 type Counts<K extends string> = { [P in `${K}_count`]: number };
 type References<K extends string> = { [P in K]: { id: number; name: string }[] };
 type IdNameObj = { id: number; name: string };
+type IdTitleObj = { id: number; title: string };
 
 /** FILMS DATA **/
 type FilmCommon = {
@@ -115,11 +116,13 @@ export type SpeciesCommon = {
 
 export type Species = SpeciesCommon &
   Counts<"people" | "films">  & {
-    homeworld: IdNameObj | null;
-  };
-  
-  export type Specie = SpeciesCommon & { 
-  residents: Omit<PeopleCommon, "homeworld">[];
+   homeworld: IdNameObj | null;
+};
+
+export type Specie = SpeciesCommon & { 
+  people: IdNameObj[];
+  homeworld: IdNameObj;
+  films: IdTitleObj[];
 };
 
 /** STARSHIPS **/
