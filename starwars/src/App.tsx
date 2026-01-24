@@ -15,7 +15,7 @@ import {
   Startpage,
   VehiclesPage,
   VehicleDetail,
-} from "./pages";
+} from "./pages/index.tsx";
 
 const App = () => {
   console.log('ENV:', import.meta.env)
