@@ -1,4 +1,5 @@
 import type { Films } from "../services/types";
+import { Link } from "react-router-dom";
 import { usePaginatedResource } from "../hooks/usePaginatedResource";
 import { useState} from "react";
 
@@ -52,6 +53,12 @@ const FilmsPage = () => {
               <img src={film.image_url} className="card-img-top" alt={film.title} />
             )}
             <div className="card-body d-flex flex-column">
+              <Link
+                to={`/films/${film.id}`}
+                className="btn btn-outline-primary mt-auto"
+              >
+                Read More
+              </Link>
               <h5 className="card-title">{film.title}</h5>
               <p><strong>Episode:</strong> {film.episode_id}</p>
               <p><strong>Director:</strong> {film.director}</p>
@@ -67,14 +74,6 @@ const FilmsPage = () => {
                 <li><strong>Vehicles:</strong> {film.vehicles_count}</li>
                 <li><strong>Species:</strong> {film.species_count}</li>
               </ul>
-              <a
-                href={`https://swapi.thehiveresistance.com/api/films/${film.id}`}
-                className="btn btn-outline-primary mt-auto"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Read More
-              </a>
             </div>
             <div className="card-footer text-muted">
               Created: {new Date(film.created).toLocaleDateString()} | Edited: {new Date(film.edited).toLocaleDateString()}
