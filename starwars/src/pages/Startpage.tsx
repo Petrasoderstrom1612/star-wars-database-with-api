@@ -13,13 +13,11 @@ const Startpage = () => {
           backgroundPosition: "center",
         }}
       >
-        {/* Dark overlay */}
         <div
           className="position-absolute top-0 start-0 w-100 h-100"
           style={{ backgroundColor: "rgba(0, 0, 0, 0.6)" }}
         />
 
-        {/* Content */}
         <div className="container position-relative">
           <div className="row">
             <div className="col-lg-8 mx-auto">
