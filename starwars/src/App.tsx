@@ -10,6 +10,8 @@ import {
 } from "./pages";
 
 const App = () => {
+  console.log('ENV:', import.meta.env)
+console.log('BASE:', import.meta.env.VITE_API_BASEURL)
   return (
     <BrowserRouter>
       <Routes>

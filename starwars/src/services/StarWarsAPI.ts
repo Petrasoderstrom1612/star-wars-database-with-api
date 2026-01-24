@@ -20,11 +20,11 @@ const get = async <T>(endpoint: string) => {
 	return res.data;
 }
 
-export const getResource = async <T>(endpoint: string, page: number, search?: string): Promise<PaginatedResponse<T>> => {
+export const getResource = async <T>(endpoint: string, page: number, query?: string): Promise<PaginatedResponse<T>> => {
   const params = new URLSearchParams();
 
   params.set("page", page.toString());
-  if (search) params.set("search", search);
+  if (query) params.set("query", query);
 
   return get<PaginatedResponse<T>>(
     `${endpoint}?${params.toString()}`

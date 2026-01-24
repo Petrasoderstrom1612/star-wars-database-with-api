@@ -33,7 +33,7 @@ const FilmsPage = () => {
         ))}
       </ul>
 
-      {!lastPage && (
+      {/* {lastPage > 1 && ( */}
         <div>
           <button disabled={page === 1} onClick={() => setPageParam(page - 1)}>
             Previous
@@ -49,7 +49,7 @@ const FilmsPage = () => {
             Next
           </button>
         </div>
-      )}
+      {/* )} */}
     </>
   );
 };
