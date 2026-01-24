@@ -19,6 +19,12 @@ export interface PaginatedResponse<T> {
   total: number;
 }
 
+export interface PaginationProps {
+  page: number;
+  lastPage: number;
+  setPage: (newPage: number) => void;
+}
+
 /*CATEGORIES*/
 type Counts<K extends string> = { [P in `${K}_count`]: number };
 type References<K extends string> = { [P in K]: { id: number; name: string }[] };

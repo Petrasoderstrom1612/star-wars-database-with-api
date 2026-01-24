@@ -1,3 +1,5 @@
+
+import Loader  from "./Loader"
 import { useState, type JSX } from "react";
 import { usePaginatedResource } from "../hooks/usePaginatedResource";
 import { SearchBar } from "./SearchBar";
@@ -25,7 +27,7 @@ export const ListPage = <T,>({ endpoint, renderItem, placeholder }: ListPageProp
 
   const handleSubmit = () => setSearchParam(input);
 
-  if (loading) return <p>Loading…</p>;
+  if (loading) { return <Loader />;}
   if (error) return <p>{error}</p>;
 
   return (
