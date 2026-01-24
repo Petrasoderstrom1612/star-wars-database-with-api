@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import type { People } from "../services/types";
 import { ListPage } from "../components/ListPage";
 
-const People = () => (
+const PeoplePage = () => (
   <ListPage<People>
     endpoint="/people"
     placeholder="Search people"
@@ -50,4 +50,4 @@ const People = () => (
   />
 );
 
-export default People
+export default PeoplePage

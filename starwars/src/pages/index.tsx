@@ -1,7 +1,7 @@
 export { default as FilmDetail } from "./FilmDetail";
-export { default as Films } from "./Films";
+export { default as FilmsPage } from "./Films";
 export { default as NotFound } from "./NotFound";
-export { default as People } from "./People";
+export { default as PeoplePage } from "./People";
 export { default as PersonDetail } from "./PersonDetail";
 export { default as PlanetDetail } from "./PlanetDetail";
 export { default as PlanetsPage } from "./Planets";

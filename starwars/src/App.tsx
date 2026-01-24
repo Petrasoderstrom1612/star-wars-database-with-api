@@ -4,7 +4,7 @@ import {
   FilmDetail,
   FilmsPage,
   NotFound,
-  People,
+  PeoplePage,
   PersonDetail,
   PlanetsPage,
   PlanetDetail,
@@ -25,7 +25,7 @@ const App = () => {
       <Routes>
         <Route element={<Layout/>}>
           <Route index element={<Startpage/>}/>
-            <Route path="/people" element={<People />} />
+            <Route path="/people" element={<PeoplePage />} />
             <Route path="/people/:id" element={<PersonDetail />} />
             <Route path="/films" element={<FilmsPage />} />
             <Route path="/films/:id" element={<FilmDetail />} />
