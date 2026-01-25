@@ -96,9 +96,9 @@ type PlanetsCommon = {
 export type Planets = PlanetsCommon &
   Counts<"residents" | "films">;
 
-export type Planet = PlanetsCommon & { 
-  residents: Omit<PeopleCommon, "homeworld">[] 
-};
+export type Planet = PlanetsCommon & {
+  residents: Omit<PeopleCommon, "homeworld">[];
+} & IdTitleArrOfObj<"films">;
 
 /** SPECIES **/
 export type SpeciesCommon = {

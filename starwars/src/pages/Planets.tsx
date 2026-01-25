@@ -21,7 +21,7 @@ const PlanetsPage = () => (
               <li><strong>Surface Water:</strong> {planet.surface_water}</li>
               <li><strong>Population:</strong> {planet.population}</li>
               <li><strong>Residents:</strong> {planet.residents_count}</li>
-              <li><strong>Appears in Films:</strong> {planet.films_count}</li>
+              <li><strong>Appears in:</strong> {planet.films_count} film{planet.films_count > 1 ? "s" : ""}</li>
             </ul>
             <Link
               to={`/planets/${planet.id}`}
