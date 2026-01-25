@@ -1,5 +1,7 @@
 import BackBtnDetailPage from "../components/BackBtnDetailPage"
 import type { Film } from "../services/types";
+import {handleError} from "../utils/handleError"
+import Loader from "../components/Loader";
 import { useParams, Link } from "react-router-dom";
 import { useFetch } from "../hooks/useFetch";
 
@@ -8,8 +10,8 @@ const FilmDetail = () => {
 
   const { data: film, loading, error } = useFetch<Film>(`/films/${id}`);
 
-  if (loading) return <p>Loading…</p>;
-  if (error) return <p>{error}</p>;
+  if (loading) { return <Loader />;}
+  if (error) return <p className="text-danger" role="alert">{handleError(error)}</p>;
   if (!film) return <p>Film not found.</p>;
 
   return (

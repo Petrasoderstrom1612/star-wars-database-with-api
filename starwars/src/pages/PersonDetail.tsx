@@ -1,4 +1,6 @@
 import BackBtnDetailPage from "../components/BackBtnDetailPage"
+import {handleError} from "../utils/handleError"
+import Loader from "../components/Loader";
 import { useFetch } from "../hooks/useFetch";
 import { useParams, Link} from "react-router-dom";
 import type { Person } from "../services/types";
@@ -8,8 +10,8 @@ const PersonDetail = () => {
 
   const { data: person, loading, error } = useFetch<Person>(`/films/${id}`);
 
-  if (loading) return <p>Loading…</p>;
-  if (error) return <p>{error}</p>;
+  if (loading) { return <Loader />;}
+  if (error) return <p className="text-danger" role="alert">{handleError(error)}</p>;
   if (!person) return <p>Person not found.</p>;
 
   return (

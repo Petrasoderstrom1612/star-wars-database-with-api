@@ -30,9 +30,6 @@ const PlanetsPage = () => (
               Read More
             </Link>
           </div>
-          <div className="card-footer text-muted">
-            Created: {new Date(planet.created).toLocaleDateString()} | Edited: {new Date(planet.edited).toLocaleDateString()}
-          </div>
         </div>
       </div>
     )}
