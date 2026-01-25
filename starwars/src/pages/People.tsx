@@ -28,10 +28,8 @@ const PeoplePage = () => (
               <li><strong>Height:</strong> {person.height} cm</li>
               <li><strong>Mass:</strong> {person.mass} kg</li>
               <li><strong>Skin color:</strong> {person.skin_color}</li>
+              <li><strong>In films total:</strong> {person.films_count}</li>
               <li><strong>Homeworld:</strong> {person.homeworld.name}</li>
-              {person.affiliations.length > 0 && (
-                <li><strong>Affiliations:</strong> {person.affiliations.join(", ")}</li>
-              )}
             </ul>
             <div className="mt-auto d-flex flex-column gap-2">
               {person.wiki_link && (

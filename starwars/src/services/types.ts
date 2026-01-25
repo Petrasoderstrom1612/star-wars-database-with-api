@@ -27,7 +27,8 @@ export interface PaginationProps {
 
 /*CATEGORIES*/
 type Counts<K extends string> = { [P in `${K}_count`]: number };
-type References<K extends string> = { [P in K]: { id: number; name: string }[] };
+type ReferencesIdName<K extends string> = { [P in K]: { id: number; name: string }[] };
+type ReferencesIdTitle<K extends string> = { [P in K]: { id: number; title: string }[] };
 type IdNameObj = { id: number; name: string };
 type IdTitleObj = { id: number; title: string };
 
@@ -49,7 +50,7 @@ export type Films = FilmCommon &
   Counts<"characters" | "planets" | "starships" | "vehicles" | "species">;
 
 export type Film = FilmCommon &
-  References<"characters" | "planets" | "starships" | "vehicles" | "species">;
+  ReferencesIdName<"characters" | "planets" | "starships" | "vehicles" | "species">;
 
 /** PEOPLE **/
 type PeopleCommon = {
@@ -73,7 +74,8 @@ export type People = PeopleCommon &
   Counts<"films" | "species" | "starships" | "vehicles">;
 
 export type Person = PeopleCommon &
-  References<"films" | "species" | "starships" | "vehicles">;
+  ReferencesIdName<"residents" | "species" | "starships" | "vehicles"> &
+  ReferencesIdTitle<"films">;
 
 /** PLANETS **/
 type PlanetsCommon = {
