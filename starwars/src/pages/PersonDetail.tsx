@@ -58,9 +58,10 @@ const PersonDetail = () => {
               <li><strong>Mass:</strong> {person.mass} kg</li>
               <li><strong>Skin color:</strong> {person.skin_color}</li>
               <li><strong>Homeworld:</strong> {person.homeworld.name}</li>
-              {person.affiliations.length > 0 && (
-                <li><strong>Affiliations:</strong> {person.affiliations.join(", ")}</li>
-              )}
+              <li>
+                <strong>Affiliations:</strong>{" "}
+              </li>
+                <span className="affiliations">{person.affiliations.join(", ")}</span>
             </ul>
 
       {person.homeworld && (
