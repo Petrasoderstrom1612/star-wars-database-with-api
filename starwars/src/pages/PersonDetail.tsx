@@ -8,7 +8,7 @@ import type { Person } from "../services/types";
 const PersonDetail = () => {
   const { id } = useParams<{ id: string }>();
 
-  const { data: person, loading, error } = useFetch<Person>(`/films/${id}`);
+  const { data: person, loading, error } = useFetch<Person>(`/people/${id}`);
 
   if (loading) { return <Loader />;}
   if (error) return <p className="text-danger" role="alert">{handleError(error)}</p>;
