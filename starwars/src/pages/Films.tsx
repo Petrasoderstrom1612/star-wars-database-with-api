@@ -13,6 +13,7 @@ const FilmsPage = () => (
           <div className="card-body d-flex flex-column">
             <h5 className="card-title">{film.title}</h5>
             <p><strong>Episode:</strong> {film.episode_id}</p>
+            <p><strong>Opening crawl:</strong> {film.opening_crawl}</p>
             <p><strong>Director:</strong> {film.director}</p>
             <p><strong>Producer:</strong> {film.producer}</p>
             <p><strong>Release Date:</strong> {film.release_date}</p>
