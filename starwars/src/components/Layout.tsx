@@ -11,7 +11,7 @@ const navItems = [
 
 const Layout = () => {
   return (
-    <div className="bg-dark text-light min-vh-100">
+    <div className="bg-black text-light min-vh-100">
       <header className="d-flex justify-content-center flex-wrap gap-3 p-3 bg-dark">
         {navItems.map(({ path, name }) => (
           <NavLink

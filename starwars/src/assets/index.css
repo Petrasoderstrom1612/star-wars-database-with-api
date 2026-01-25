@@ -3,3 +3,17 @@
   max-width: 300px; 
   word-wrap: break-word; 
 }
+
+.bg-black{
+  background-color: #000000 !important;
+}
+
+header {
+  position: relative;
+  background: #000;
+  color: #fff;
+  padding: 2rem;
+  height: 70px;;
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 80%, rgba(0,0,0,0) 100%);
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 80%, rgba(0,0,0,0) 100%);
+}
