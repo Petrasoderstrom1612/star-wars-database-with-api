@@ -1,11 +1,11 @@
-import { useParams, Link, useNavigate } from "react-router-dom";
+import BackBtnDetailPage from "../components/BackBtnDetailPage"
+import { useParams, Link} from "react-router-dom";
 import { useState, useEffect } from "react";
 import { get } from "../services/StarWarsAPI";
 import type { Person } from "../services/types";
 
 const PersonDetail = () => {
   const { id } = useParams<{ id: string }>();
-  const navigate = useNavigate();
   const [person, setPerson] = useState<Person | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -34,12 +34,7 @@ const PersonDetail = () => {
 
   return (
     <div className="container mt-3">
-      <button
-        className="btn btn-secondary mb-3"
-        onClick={() => navigate(-1)}
-      >
-        &larr; Back
-      </button>
+      <BackBtnDetailPage/>
 
       {person.image_url && (
         <div className="row mb-4">
