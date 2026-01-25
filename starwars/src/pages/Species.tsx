@@ -31,7 +31,7 @@ const SpeciesPage = () => (
               <li><strong>Films Count:</strong> {specie.films_count}</li>
             </ul>
 
-            <Link to={`/species/${specie.id}`} className="btn btn-outline-primary mt-3">
+            <Link to={`/species/${specie.id}`} className="btn btn-outline-primary mt-auto">
               Read More
             </Link>
           </div>
