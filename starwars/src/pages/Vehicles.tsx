@@ -12,19 +12,19 @@ const VehiclesPage = () => (
           <div className="card-body d-flex flex-column">
             <h5 className="card-title">{vehicle.name}</h5>
 
-            <ul className="list-unstyled mb-3">
+            <ul className="list-unstyled mb-3 small">
               <li><strong>Model:</strong> {vehicle.model}</li>
               <li><strong>Class:</strong> {vehicle.vehicle_class}</li>
               <li><strong>Manufacturer:</strong> {vehicle.manufacturer}</li>
               <li><strong>Cost:</strong> {vehicle.cost_in_credits === "unknown" ? "Unknown" : `${vehicle.cost_in_credits} credits`}</li>
-              <li><strong>Length:</strong> {vehicle.length}</li>
-              <li><strong>Crew:</strong> {vehicle.crew}</li>
-              <li><strong>Passengers:</strong> {vehicle.passengers}</li>
-              <li><strong>Max Speed:</strong> {vehicle.max_atmosphering_speed}</li>
-              <li><strong>Cargo Capacity:</strong> {vehicle.cargo_capacity}</li>
+              <li><strong>Length:</strong> {vehicle.length === "unknown" ? "Unknown" : `${vehicle.length} m`}</li>
+              <li><strong>Crew:</strong> {vehicle.crew === "unknown" ? "Unknown" : `${vehicle.crew} crew member${vehicle.crew !== "1" ? "s" : ""}`}</li>
+              <li><strong>Passengers:</strong> {vehicle.passengers === "unknown" ? "Unknown" : `${vehicle.passengers} passenger${vehicle.passengers !== "1" ? "s" : ""}`}</li>
+              <li><strong>Max Speed:</strong> {vehicle.max_atmosphering_speed === "unknown" ? "Unknown" : `${vehicle.max_atmosphering_speed} km/h`}</li>
+              <li><strong>Cargo:</strong> {vehicle.cargo_capacity === "unknown" ? "Unknown" : `${vehicle.cargo_capacity} kg`}</li>
               <li><strong>Consumables:</strong> {vehicle.consumables}</li>
-              <li><strong>Pilots Count:</strong> {vehicle.pilots_count}</li>
-              <li><strong>Films Count:</strong> {vehicle.films_count}</li>
+              <li><strong>Pilots:</strong> {vehicle.pilots_count} pilot{vehicle.pilots_count !== 1 && "s"}</li>
+              <li><strong>Films:</strong> {vehicle.films_count} film{vehicle.films_count !== 1 && "s"}</li>
             </ul>
 
             <Link
