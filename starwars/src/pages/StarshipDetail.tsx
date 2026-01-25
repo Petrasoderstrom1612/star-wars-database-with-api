@@ -37,9 +37,9 @@ const StarshipDetail = () => {
         <div className="mb-3">
           <h5>Pilots ({starship.pilots.length})</h5>
           <ul>
-            {starship.pilots.map((pilot) => (
-              <li key={pilot.id}>
-                <Link to={`/people/${pilot.id}`}>{pilot.name}</Link>
+            {starship.pilots.map((person) => (
+              <li key={person.id}>
+                <Link to={`/people/${person.id}`}>{person.name}</Link>
               </li>
             ))}
           </ul>

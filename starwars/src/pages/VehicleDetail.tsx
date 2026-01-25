@@ -18,28 +18,28 @@ const VehicleDetail = () => {
    <div className="container mt-3">
       <BackBtnDetailPage/>
 
-            <h5 className="card-title">{vehicle.name}</h5>
+      <h5 className="card-title">{vehicle.name}</h5>
 
-            <ul className="list-unstyled mb-3 small">
-              <li><strong>Model:</strong> {vehicle.model}</li>
-              <li><strong>Class:</strong> {vehicle.vehicle_class}</li>
-              <li><strong>Manufacturer:</strong> {vehicle.manufacturer}</li>
-              <li><strong>Cost:</strong> {vehicle.cost_in_credits === "unknown" ? "Unknown" : `${vehicle.cost_in_credits} credits`}</li>
-              <li><strong>Length:</strong> {vehicle.length === "unknown" ? "Unknown" : `${vehicle.length} m`}</li>
-              <li><strong>Crew:</strong> {vehicle.crew === "unknown" ? "Unknown" : `${vehicle.crew} crew member${vehicle.crew !== "1" ? "s" : ""}`}</li>
-              <li><strong>Passengers:</strong> {vehicle.passengers === "unknown" ? "Unknown" : `${vehicle.passengers} passenger${vehicle.passengers !== "1" ? "s" : ""}`}</li>
-              <li><strong>Max Speed:</strong> {vehicle.max_atmosphering_speed === "unknown" ? "Unknown" : `${vehicle.max_atmosphering_speed} km/h`}</li>
-              <li><strong>Cargo:</strong> {vehicle.cargo_capacity === "unknown" ? "Unknown" : `${vehicle.cargo_capacity} kg`}</li>
-              <li><strong>Consumables:</strong> {vehicle.consumables}</li>
-            </ul>
+      <ul className="list-unstyled mb-3 small">
+        <li><strong>Model:</strong> {vehicle.model}</li>
+        <li><strong>Class:</strong> {vehicle.vehicle_class}</li>
+        <li><strong>Manufacturer:</strong> {vehicle.manufacturer}</li>
+        <li><strong>Cost:</strong> {vehicle.cost_in_credits === "unknown" ? "Unknown" : `${vehicle.cost_in_credits} credits`}</li>
+        <li><strong>Length:</strong> {vehicle.length === "unknown" ? "Unknown" : `${vehicle.length} m`}</li>
+        <li><strong>Crew:</strong> {vehicle.crew === "unknown" ? "Unknown" : `${vehicle.crew} crew member${vehicle.crew !== "1" ? "s" : ""}`}</li>
+        <li><strong>Passengers:</strong> {vehicle.passengers === "unknown" ? "Unknown" : `${vehicle.passengers} passenger${vehicle.passengers !== "1" ? "s" : ""}`}</li>
+        <li><strong>Max Speed:</strong> {vehicle.max_atmosphering_speed === "unknown" ? "Unknown" : `${vehicle.max_atmosphering_speed} km/h`}</li>
+        <li><strong>Cargo:</strong> {vehicle.cargo_capacity === "unknown" ? "Unknown" : `${vehicle.cargo_capacity} kg`}</li>
+        <li><strong>Consumables:</strong> {vehicle.consumables}</li>
+      </ul>
 
       {vehicle.pilots && vehicle.pilots?.length > 0 && (
         <div className="mb-3">
           <h5>Pilots ({vehicle.pilots.length})</h5>
           <ul>
-            {vehicle.pilots.map((pilot) => (
-              <li key={pilot.id}>
-                <Link to={`/people/${pilot.id}`}>{pilot.name}</Link>
+            {vehicle.pilots.map((person) => (
+              <li key={person.id}>
+                <Link to={`/people/${person.id}`}>{person.name}</Link>
               </li>
             ))}
           </ul>
