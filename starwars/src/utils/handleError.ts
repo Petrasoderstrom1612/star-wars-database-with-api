@@ -11,6 +11,6 @@ export const handleError = (err: unknown): string => {
   } 
   else {
     console.log("Something unexpected happened that does not have to do with the network.", err);
-    return "Something unexpected happened";
+    return "We could not find what you were looking for.";
   }
 };

@@ -138,7 +138,7 @@ export type StarshipsCommon = {
   crew: string;
   passengers: string;
   max_atmosphering_speed: string;
-  MGLT: string;
+  MGLT?: string;
   cargo_capacity: string;
   consumables: string;
   created: string;
@@ -148,8 +148,10 @@ export type StarshipsCommon = {
 export type Starships = StarshipsCommon &
   Counts<"pilots" | "films">;
 
-export type Starship = StarshipsCommon &
-  IdNameArrOfObj<"films" | "pilots">;
+export type Starship = StarshipsCommon  &
+  IdNameArrOfObj<"pilots"> &
+  IdTitleArrOfObj<"films">;
+
   
 /** VEHICLES **/
 export type VehiclesCommon = {
@@ -172,5 +174,6 @@ export type VehiclesCommon = {
 export type Vehicles = VehiclesCommon & 
   Counts<"pilots" | "films">;
 
-export type Vehicle = VehiclesCommon &
-  IdNameArrOfObj<"films" | "pilots">;
+export type Vehicle = VehiclesCommon  &
+  IdNameArrOfObj<"pilots"> &
+  IdTitleArrOfObj<"films">;
