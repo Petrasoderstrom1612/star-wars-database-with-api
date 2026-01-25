@@ -27,8 +27,8 @@ export interface PaginationProps {
 
 /*CATEGORIES*/
 type Counts<K extends string> = { [P in `${K}_count`]: number };
-type ReferencesIdName<K extends string> = { [P in K]: { id: number; name: string }[] };
-type ReferencesIdTitle<K extends string> = { [P in K]: { id: number; title: string }[] };
+type IdNameArrOfObj<K extends string> = { [P in K]: { id: number; name: string }[] };
+type IdTitleArrOfObj<K extends string> = { [P in K]: { id: number; title: string }[] };
 type IdNameObj = { id: number; name: string };
 type IdTitleObj = { id: number; title: string };
 
@@ -50,7 +50,7 @@ export type Films = FilmCommon &
   Counts<"characters" | "planets" | "starships" | "vehicles" | "species">;
 
 export type Film = FilmCommon &
-  ReferencesIdName<"characters" | "planets" | "starships" | "vehicles" | "species">;
+  IdNameArrOfObj<"characters" | "planets" | "starships" | "vehicles" | "species">;
 
 /** PEOPLE **/
 type PeopleCommon = {
@@ -74,8 +74,8 @@ export type People = PeopleCommon &
   Counts<"films" | "species" | "starships" | "vehicles">;
 
 export type Person = PeopleCommon &
-  ReferencesIdName<"residents" | "species" | "starships" | "vehicles"> &
-  ReferencesIdTitle<"films">;
+  IdNameArrOfObj<"residents" | "species" | "starships" | "vehicles"> &
+  IdTitleArrOfObj<"films">;
 
 /** PLANETS **/
 type PlanetsCommon = {
