@@ -114,16 +114,15 @@ export type SpeciesCommon = {
   language: string;
   created: string;
   edited: string;
+  homeworld: IdNameObj | null;
 };
 
 export type Species = SpeciesCommon &
   Counts<"people" | "films">  & {
-   homeworld: IdNameObj | null;
 };
 
 export type Specie = SpeciesCommon & { 
   people: IdNameObj[];
-  homeworld: IdNameObj;
   films: IdTitleObj[];
 };
 
