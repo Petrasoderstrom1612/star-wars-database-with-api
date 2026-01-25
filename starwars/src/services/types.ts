@@ -121,10 +121,10 @@ export type Species = SpeciesCommon &
   Counts<"people" | "films">  & {
 };
 
-export type Specie = SpeciesCommon & { 
+export interface Specie extends SpeciesCommon {
   people: IdNameObj[];
   films: IdTitleObj[];
-};
+}
 
 /** STARSHIPS **/
 export type StarshipsCommon = {
@@ -144,5 +144,13 @@ export type StarshipsCommon = {
   created: string;
   edited: string;
 };
+
+export type Starships = StarshipsCommon &
+  Counts<"pilots" | "films">  & {
+};
+
+export type Starship =
+  StarshipsCommon &
+  IdNameArrOfObj<"films" | "pilots">;
 
 /** VEHICLES **/
