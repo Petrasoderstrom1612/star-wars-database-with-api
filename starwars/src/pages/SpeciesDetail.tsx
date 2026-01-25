@@ -12,7 +12,7 @@ const SpeciesDetail = () => {
 
   if (loading) { return <Loader />;}
   if (error) return <p className="text-danger" role="alert">{handleError(error)}</p>;
-  if (!specie) return <p>Person not found.</p>;
+  if (!specie) return <p>Species not found.</p>;
 
   return (
     <div className="container mt-3">

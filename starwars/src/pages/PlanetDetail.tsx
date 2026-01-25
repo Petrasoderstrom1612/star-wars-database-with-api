@@ -12,7 +12,7 @@ const PlanetDetail = () => {
 
   if (loading) { return <Loader />;}
   if (error) return <p className="text-danger" role="alert">{handleError(error)}</p>;
-  if (!planet) return <p>Person not found.</p>;
+  if (!planet) return <p>Planet not found.</p>;
 
   return (
     <div className="container mt-3">
