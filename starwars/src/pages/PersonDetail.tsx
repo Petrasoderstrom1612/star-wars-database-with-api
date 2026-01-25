@@ -1,32 +1,12 @@
 import BackBtnDetailPage from "../components/BackBtnDetailPage"
+import { useFetch } from "../hooks/useFetch";
 import { useParams, Link} from "react-router-dom";
-import { useState, useEffect } from "react";
-import { get } from "../services/StarWarsAPI";
 import type { Person } from "../services/types";
 
 const PersonDetail = () => {
   const { id } = useParams<{ id: string }>();
-  const [person, setPerson] = useState<Person | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
 
-  useEffect(() => {
-    const fetchPerson = async () => {
-      setLoading(true);
-      setError(null);
-      try {
-        const data = await get<Person>(`/people/${id}`);
-        setPerson(data);
-      } catch (err) {
-        console.error(err);
-        setError("Failed to load person.");
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchPerson();
-  }, [id]);
+  const { data: person, loading, error } = useFetch<Person>(`/films/${id}`);
 
   if (loading) return <p>Loading…</p>;
   if (error) return <p>{error}</p>;

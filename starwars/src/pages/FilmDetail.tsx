@@ -1,7 +1,7 @@
 import BackBtnDetailPage from "../components/BackBtnDetailPage"
+import type { Film } from "../services/types";
 import { useParams, Link } from "react-router-dom";
 import { useFetch } from "../hooks/useFetch";
-import type { Film } from "../services/types";
 
 const FilmDetail = () => {
   const { id } = useParams<{ id: string }>(); // get the film id from URL
