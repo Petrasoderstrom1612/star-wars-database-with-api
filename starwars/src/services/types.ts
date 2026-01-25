@@ -97,8 +97,8 @@ export type Planets = PlanetsCommon &
   Counts<"residents" | "films">;
 
 export type Planet = PlanetsCommon & {
-  residents: Omit<PeopleCommon, "homeworld">[];
-} & IdTitleArrOfObj<"films">;
+  residents: Omit<PeopleCommon, "homeworld">[]} & 
+  IdTitleArrOfObj<"films">;
 
 /** SPECIES **/
 export type SpeciesCommon = {
@@ -146,11 +146,31 @@ export type StarshipsCommon = {
 };
 
 export type Starships = StarshipsCommon &
-  Counts<"pilots" | "films">  & {
-};
+  Counts<"pilots" | "films">;
 
-export type Starship =
-  StarshipsCommon &
+export type Starship = StarshipsCommon &
   IdNameArrOfObj<"films" | "pilots">;
-
+  
 /** VEHICLES **/
+export type VehiclesCommon = {
+  id: number;
+  name: string;
+  model: string;
+  vehicle_class: string;
+  manufacturer: string;
+  length: string;
+  cost_in_credits: string;
+  crew: string;
+  passengers: string;
+  max_atmosphering_speed: string;
+  cargo_capacity: string;
+  consumables: string;
+  created: string;
+  edited: string;
+}
+
+export type Vehicles = VehiclesCommon & 
+  Counts<"pilots" | "films">;
+
+export type Vehicle = VehiclesCommon &
+  IdNameArrOfObj<"films" | "pilots">;
