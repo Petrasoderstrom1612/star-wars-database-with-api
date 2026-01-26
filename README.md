@@ -1,1 +1,1 @@
-URL: (https://starwars-encyclopedia-typescript.netlify.app/)
+URL: https://starwars-encyclopedia-typescript.netlify.app/
