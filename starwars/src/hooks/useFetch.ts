@@ -1,7 +1,7 @@
 import { get } from "../services/StarWarsAPI"; 
 import { useState, useEffect } from "react";
 
-export function useFetch<T>(endpoint: string) {
+export const useFetch = <T,>(endpoint: string) => {
   const [data, setData] = useState<T | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
