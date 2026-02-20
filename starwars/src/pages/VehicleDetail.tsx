@@ -19,7 +19,6 @@ const VehicleDetail = () => {
       <BackBtnDetailPage/>
 
       <h5 className="card-title">{vehicle.name}</h5>
-
       <ul className="list-unstyled mb-3 small">
         <li><strong>Model:</strong> {vehicle.model}</li>
         <li><strong>Class:</strong> {vehicle.vehicle_class}</li>
