@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import type { People } from "../services/types";
 import { ListPage } from "../components/ListPage";
+import StarwarsLogo from "../assets/starwars-logo.jpg"
 
 const PeoplePage = () => (
   <ListPage<People>
@@ -9,13 +10,21 @@ const PeoplePage = () => (
     renderItem={(person) => (
       <div key={person.id} className="col-12 col-md-6 col-lg-4 mb-4">
         <div className="card h-100">
-          {person.image_url && (
+          {person.image_url ? (
             <div className="overflow-hidden" style={{ height: "600px" }}>
               <img
                 src={person.image_url}
                 className="card-img-top w-100 h-100"
                 alt={person.name}
                 style={{ objectFit: "cover", objectPosition: "top" }}
+              />
+            </div>
+          ): (
+            <div className="overflow-hidden" style={{ height: "600px" }}>
+              <img
+                src={StarwarsLogo} 
+                className="card-img-top w-100 h-100"
+                alt={`Starwars logo, image of ${person.name} not found`}
               />
             </div>
           )}
