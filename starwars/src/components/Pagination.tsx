@@ -1,7 +1,8 @@
 import type { FC } from "react";
 import type { PaginationProps } from "../services/types";
 
-export const Pagination: FC<PaginationProps> = ({ page, lastPage, setPage }) => {
+export const Pagination: FC<PaginationProps> = ({ page, lastPage, setPage, search }) => {
+  
   if (lastPage <= 1) return null;
 
   return (
@@ -10,7 +11,7 @@ export const Pagination: FC<PaginationProps> = ({ page, lastPage, setPage }) => 
         Previous
       </button>
       <span>
-        Page {page} of {lastPage}
+        Page <a href={`?page=${page}${search ? `&search=${search}` : ""}`}>{page}</a> of <a href={`?page=${lastPage}${search ? `&search=${search}` : ""}`}>{lastPage}</a>
       </span>
       <button className="btn btn-secondary" disabled={page === lastPage} onClick={() => setPage(page + 1)}>
         Next
