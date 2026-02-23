@@ -97,23 +97,8 @@ export type Planets = PlanetsCommon &
   Counts<"residents" | "films">;
   
 export type Planet = PlanetsCommon & {
-  residents: {
-    id: number;
-    name: string;
-    birth_year: string;
-    eye_color: string;
-    hair_color: string;
-    height: string;
-    mass: string;
-    skin_color: string;
-    wiki_link: string;
-    image_url: string;
-    affiliations: string[];
-    created: string;
-    edited: string;
-    // homeworld is intentionally excluded in the type
-  }[];
-} & IdTitleArrOfObj<"films">;  
+  residents: Omit<PeopleCommon, "homeworld">[];
+} & IdTitleArrOfObj<"films">;
 
 /** SPECIES **/
 export type SpeciesCommon = {
