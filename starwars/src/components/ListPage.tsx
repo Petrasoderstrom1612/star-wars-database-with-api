@@ -38,7 +38,7 @@ export const ListPage = <T,>({ endpoint, renderItem, placeholder }: ListPageProp
         {data.map(renderItem)}
       </div>
 
-      <Pagination page={page} lastPage={lastPage} setPage={setPageParam} />
+      <Pagination page={page} lastPage={lastPage} setPage={setPageParam} search={search}/>
     </>
   );
 };

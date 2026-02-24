@@ -23,7 +23,7 @@ export interface PaginationProps {
   page: number;
   lastPage: number;
   setPage: (newPage: number) => void;
-  search: string;
+  search?: string;
 }
 
 /*CATEGORIES*/
